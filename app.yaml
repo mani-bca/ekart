@@ -7,7 +7,7 @@ spec:
   project: ekart-project
 
   source:
-    repoURL: https://github.com/DhruvinSoni30/ArgoCD-Demo.git
+    repoURL: https://github.com/mani-bca/ekart.git
     targetRevision: HEAD
     path: dev
   destination: 
