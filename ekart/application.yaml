@@ -7,9 +7,9 @@ spec:
   project: ekart-project
 
   source:
-    repoURL: https://github.com/mani-bca/ekart.git
+    repoURL: https://github.com/mani-bca/k8s_argo_repo.git
     targetRevision: HEAD
-    path: dev
+    path: ekart/dev
   destination: 
     server: https://kubernetes.default.svc
     namespace: ekart
