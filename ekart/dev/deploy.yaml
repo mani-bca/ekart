@@ -15,17 +15,7 @@ spec:
       containers:
       - name: ekart
         image: manidevops2021/ekart:5.0
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: ekart-service
-# spec:
-#   selector:
-#     app: ekart
-#   ports:
-#   - port: 80
-#     protocol: TCP
+
 ---
 apiVersion: v1
 kind: Service
@@ -44,9 +34,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  creationTimestamp: null
   name: ekart-ingress
-  namespace: ekart
+  # namespace: ekart # Commenting out as it might use the default namespace
 spec:
   rules:
   - http:
@@ -55,8 +44,19 @@ spec:
           service:
             name: ekart-service
             port:
-              number: 30006
+              number: 80  # Use the service port (not the nodePort)
         path: /ekart
-        pathType: Exact
-status:
-  loadBalancer: {}
+        pathType: Prefix 
+
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: ekart-service
+# spec:
+#   selector:
+#     app: ekart
+#   ports:
+#   - port: 80
+#     protocol: TCP
